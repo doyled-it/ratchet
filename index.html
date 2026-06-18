@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratchet: The Body Fights Back, what the research actually says about weight loss</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="%2316121C"/><path d="M16 7 L24 17 H19 V25 H13 V17 H8 Z" fill="%23F0703A"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#16121C;
+    --bg-2:#1E1826;
+    --bg-3:#271F31;
+    --ink:#ECE4DC;
+    --ink-dim:#A99FB0;
+    --ink-faint:#6E6478;
+    --ember:#F0703A;       /* biology fighting back: regain, hunger, the metabolic gap */
+    --ember-deep:#C24A22;
+    --jade:#54C4A6;        /* human effort: the weight actually lost */
+    --jade-deep:#2E8A72;
+    --gold:#E8B54B;        /* the medical lever: GLP-1 */
+    --line:rgba(236,228,220,0.12);
+    --line-strong:rgba(236,228,220,0.22);
+    --serif:"Instrument Serif",Georgia,serif;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --maxw:720px;
+    --figw:940px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-weight:400;line-height:1.65;
+    font-size:18px;letter-spacing:.002em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:rgba(240,112,58,.32);color:#fff}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(232,181,75,.35)}
+  a:hover{border-color:var(--gold)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .fig{max-width:var(--figw);margin:0 auto;padding:0 26px}
+
+  /* ---------- eyebrow / labels ---------- */
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--ember);display:inline-block;
+  }
+  .eyebrow.jade{color:var(--jade)} .eyebrow.gold{color:var(--gold)} .eyebrow.dim{color:var(--ink-faint)}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:80px 0 60px;overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;left:50%;bottom:-38%;transform:translateX(-50%);
+    width:120vw;height:90vh;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(240,112,58,.20),rgba(240,112,58,.06) 45%,transparent 72%);
+    pointer-events:none;filter:blur(6px);
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .kicker{font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:30px}
+  h1.title{
+    font-family:var(--serif);font-weight:400;line-height:.98;letter-spacing:-.01em;
+    font-size:clamp(48px,9vw,104px);margin:0 0 26px;
+  }
+  h1.title em{font-style:italic;color:var(--ember)}
+  .lede{font-size:clamp(19px,2.4vw,23px);color:var(--ink-dim);max-width:620px;line-height:1.55}
+  .lede strong{color:var(--ink);font-weight:600}
+  .hero-fig{position:relative;z-index:2;margin-top:54px}
+  .scrollcue{margin-top:48px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:12px}
+  .scrollcue .bar{width:34px;height:1px;background:var(--ink-faint);position:relative;overflow:hidden}
+  .scrollcue .bar::after{content:"";position:absolute;inset:0;background:var(--ember);transform:translateX(-100%);animation:sweep 2.4s ease-in-out infinite}
+  @keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(100%)}100%{transform:translateX(100%)}}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;position:relative}
+  section.tint{background:linear-gradient(180deg,transparent,rgba(40,31,49,.45) 12%,rgba(40,31,49,.45) 88%,transparent)}
+  .sec-head{margin-bottom:14px}
+  h2{
+    font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.02;
+    font-size:clamp(34px,5.4vw,58px);margin:14px 0 0;
+  }
+  h2 em{font-style:italic;color:var(--ember)}
+  h3{font-family:var(--sans);font-weight:700;font-size:21px;letter-spacing:-.01em;margin:46px 0 10px;color:var(--ink)}
+  p{margin:0 0 20px}
+  p.big{font-size:21px;color:var(--ink)}
+  .dim{color:var(--ink-dim)}
+  strong{font-weight:700;color:var(--ink)}
+  .accent-e{color:var(--ember);font-weight:600}
+  .accent-j{color:var(--jade);font-weight:600}
+  .accent-g{color:var(--gold);font-weight:600}
+
+  /* pull quote */
+  .pull{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(26px,4vw,40px);line-height:1.18;letter-spacing:-.01em;
+    color:var(--ink);margin:54px auto;max-width:760px;text-align:left;padding-left:26px;
+    border-left:2px solid var(--ember);
+  }
+
+  /* ---------- figure cards ---------- */
+  .card{
+    background:linear-gradient(180deg,var(--bg-2),rgba(30,24,38,.55));
+    border:1px solid var(--line);border-radius:14px;padding:26px 24px 22px;
+    margin:38px auto;box-shadow:0 24px 60px -40px rgba(0,0,0,.9);
+  }
+  .card .cap{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-faint);margin-top:14px;line-height:1.5}
+  .card .cap b{color:var(--ink-dim);font-weight:500}
+  .fig-title{font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.01em;color:var(--ink);margin:0 0 2px}
+  .fig-sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-faint);margin:0 0 16px;text-transform:uppercase}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:16px 22px;margin:6px 0 4px;font-family:var(--mono);font-size:12px;color:var(--ink-dim)}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:40px auto}
+  .stat{background:var(--bg-2);padding:24px 20px}
+  .stat .n{font-family:var(--serif);font-size:clamp(34px,6vw,52px);line-height:1;color:var(--ember)}
+  .stat.j .n{color:var(--jade)} .stat.g .n{color:var(--gold)}
+  .stat .l{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-dim);margin-top:12px;line-height:1.5;text-transform:uppercase}
+  @media(max-width:640px){.stats{grid-template-columns:1fr}}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  /* footer / refs */
+  footer{padding:80px 0 110px;border-top:1px solid var(--line);margin-top:40px}
+  .refs{list-style:none;padding:0;margin:24px 0 0;counter-reset:r}
+  .refs li{counter-increment:r;position:relative;padding:14px 0 14px 42px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-dim);line-height:1.5}
+  .refs li:first-child{border-top:none}
+  .refs li::before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:15px;font-family:var(--mono);font-size:12px;color:var(--ember)}
+  .refs b{color:var(--ink);font-weight:600}
+  .note{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.02em;line-height:1.6;margin-top:30px}
+
+  @media(max-width:640px){
+    body{font-size:17px}
+    section{padding:64px 0}
+    .pull{padding-left:18px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;transition:none}
+    .scrollcue .bar::after{animation:none}
+    *{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================= HERO ========================= -->
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="kicker rv"><span style="color:var(--ember);font-weight:700">Ratchet</span> &middot; a data essay on weight, willpower, and biology</div>
+    <h1 class="title rv">The body<br><em>fights back.</em></h1>
+    <p class="lede rv">Most popular diets perform about the same. Calories in, calories out is real but incomplete. And the cruelest finding is this: weight behaves like a <strong>ratchet</strong>, easy to click upward and stubbornly hard to let back down, because once a person loses weight the body fights for years to put it back. Here is what the evidence actually shows, and why "just eat less" misses how steep the climb really is.</p>
+
+    <div class="hero-fig rv">
+      <div class="legend">
+        <span><i style="background:var(--jade)"></i>What effort achieves</span>
+        <span><i style="background:var(--ember)"></i>What biology pulls back</span>
+        <span><i style="background:var(--ink-faint);height:2px;width:18px;border-radius:1px"></i>The defended baseline</span>
+      </div>
+      <svg id="heroChart" viewBox="0 0 940 300" role="img" aria-label="A weight curve dropping with effort then being pulled back up toward a defended baseline"></svg>
+    </div>
+
+    <div class="scrollcue rv"><span class="bar"></span> Scroll to read the evidence</div>
+  </div>
+</header>
+
+<!-- ========================= 1. DIETS ========================= -->
+<section id="diets">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The premise &middot; Do the diets work</span>
+      <h2>No diet has a <em>secret engine.</em></h2>
+    </div>
+    <p class="big rv dim">My skepticism here was well placed. When researchers put the famous diets head to head and control them properly, the branded approach almost never matters. What matters is whether a person can stick to it.</p>
+
+    <p class="rv">The cleanest test is Stanford's <strong>DIETFITS</strong> trial: 609 adults randomized to a healthy low-fat or a healthy low-carb diet for a year. Both groups lost roughly the same amount, around five to six kilograms, and matching people to a diet by their genes or insulin response gave no edge. The earlier <strong>POUNDS LOST</strong> trial varied fat, protein, and carbohydrate ratios and found weight loss did not track the macros. A large review of the named commercial diets reached the same verdict: similar modest losses across all of them, with adherence as the real predictor.</p>
+  </div>
+
+  <div class="fig rv" data-chart="diets">
+    <div class="card">
+      <p class="fig-title">Twelve months, different diets, nearly identical results</p>
+      <p class="fig-sub">Mean weight change at ~1 year &middot; kilograms</p>
+      <svg id="dietChart" viewBox="0 0 880 360" aria-label="Bar chart comparing weight loss across diets, all roughly similar"></svg>
+      <p class="cap"><b>Source:</b> Gardner et al., DIETFITS, JAMA 2018 (low-fat vs low-carb); Sacks et al., POUNDS LOST, NEJM 2009; Johnston et al., JAMA 2014 (named-diet meta-analysis). Bars are approximate mean changes; differences between diets were small and mostly not significant.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h3 class="rv">So why does keto feel like magic in week one?</h3>
+    <p class="rv">Because most of that first whoosh is water, not fat. The body stores carbohydrate as glycogen, and every gram of glycogen holds roughly three to four grams of water with it. Cut carbs and the body drains that reservoir fast, dropping several pounds that have nothing to do with body fat. When metabolism is measured in tightly controlled feeding studies, low-carb diets show no meaningful "fat-burning advantage." Any difference is on the order of a few dozen calories a day, small enough to vanish into measurement noise. Keto can absolutely help a given person, but through appetite and structure, not a metabolic loophole.</p>
+  </div>
+</section>
+
+<!-- ========================= 2. CICO ========================= -->
+<section id="cico" class="tint">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow jade">The machinery &middot; Calories in, calories out</span>
+      <h2>True. And <em>not the whole story.</em></h2>
+    </div>
+    <p class="big rv dim">Energy balance governs weight. No one loses fat without a net deficit; that part is essentially physics. The trap is treating it like a simple thermostat, where both numbers sit still and only deliberate choices move them. They do not sit still.</p>
+
+    <p class="rv"><span class="accent-j">"Calories out"</span> is not one number. It is resting metabolism (the largest piece), the energy spent digesting food, deliberate exercise, and all the fidgeting and movement no one thinks about. Every one of those can shrink when a person eats less. <span class="accent-e">"Calories in"</span> is not fully under conscious control either. How full a food leaves someone, how fast it gets eaten, and how much the body absorbs all shift with what is on the plate.</p>
+
+    <p class="rv">A landmark feeding study showed how much the food itself matters. With calories, sugar, fat, and fiber matched, people allowed to eat freely consumed about <strong>500 more calories a day</strong> on an ultra-processed menu than on an unprocessed one, and gained weight, simply because processed food is easy to eat quickly and slow to satisfy. Same calories on paper, very different outcomes in a body.</p>
+  </div>
+
+  <div class="fig rv" data-chart="cico">
+    <div class="card">
+      <p class="fig-title">Same calories on the label, 500 a day apart at the table</p>
+      <p class="fig-sub">Ad-lib daily intake, matched macros &middot; kcal/day</p>
+      <svg id="upfChart" viewBox="0 0 880 280" aria-label="Bar chart showing higher calorie intake on ultra-processed diet"></svg>
+      <p class="cap"><b>Source:</b> Hall et al., Cell Metabolism 2019, inpatient metabolic-ward crossover. Both menus were matched for calories presented, macronutrients, sugar, sodium and fiber; participants simply ate more of the processed one.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="rv">The one lever with real leverage is protein. It costs more energy to digest than carbohydrate or fat, and it is the most filling of the three, which quietly nudges both sides of the equation in a favorable direction. That is most of the practical truth behind every diet that works: it is a delivery system for eating somewhat less, somewhat more comfortably, for long enough to matter.</p>
+  </div>
+</section>
+
+<!-- ========================= 3. THE TRAP (empathy core) ========================= -->
+<section id="hard">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The trap &middot; Why it is so hard to keep off</span>
+      <h2>Lose the weight, and the body treats it as an <em>emergency.</em></h2>
+    </div>
+    <p class="big rv dim">This is the part that deserves empathy, because it is not a story about weak character. It is a story about a survival system doing exactly what it evolved to do, and doing it to people who are trying as hard as they can.</p>
+
+    <p class="rv">Follow the contestants from <strong>"The Biggest Loser"</strong>. They lost staggering amounts of weight, an average of 58 kilograms. Their resting metabolism fell with it, which is what anyone would expect for a smaller body. But six years later, after most had regained much of the weight, their metabolism had not recovered. It was still running about <span class="accent-e">700 calories a day below where they started</span>, and roughly <span class="accent-e">500 of those calories were unexplained by their body size alone</span>. Their bodies were burning far less fuel than a person of the same weight who had never dieted. They were, in effect, being penalized for having lost weight.</p>
+  </div>
+
+  <div class="fig rv" data-chart="bl">
+    <div class="card">
+      <p class="fig-title">The metabolism that never came back</p>
+      <p class="fig-sub">Resting metabolic rate &middot; kcal/day &middot; "Biggest Loser" contestants</p>
+      <svg id="blChart" viewBox="0 0 880 380" aria-label="Resting metabolic rate dropping during weight loss and staying suppressed six years later"></svg>
+      <p class="cap"><b>Source:</b> Fothergill et al., Obesity 2016. Six years on, despite regaining ~41 kg of the ~58 kg lost, resting metabolism stayed about 700 kcal/day below baseline. The dashed marker shows where metabolism "should" sit for their regained body size; the gap below it is metabolic adaptation that did not fade.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="pull rv">The people who kept the most weight off were the ones whose metabolism slowed the most. The harder the success, the harder the body pushed back.</p>
+
+    <h3 class="rv">And the hunger does not switch off either.</h3>
+    <p class="rv">Metabolism is only half the defense. In a study tracking appetite hormones through weight loss, the changes were still there a full year later. Ghrelin, the hormone that drives hunger, stayed <span class="accent-e">elevated</span>. Leptin and the gut hormones that signal fullness stayed <span class="accent-e">suppressed</span>. And the people reported being measurably hungrier than before they ever lost the weight. The body was not just burning less. It was actively turning up the pressure to eat, and keeping it turned up.</p>
+  </div>
+
+  <div class="fig rv" data-chart="horm">
+    <div class="card">
+      <p class="fig-title">A year later, still hungrier than the day they started</p>
+      <p class="fig-sub">Change from baseline at 1 year, after losing ~13.5 kg</p>
+      <svg id="hormChart" viewBox="0 0 880 320" aria-label="Hunger hormones and subjective hunger remaining altered one year after weight loss"></svg>
+      <p class="cap"><b>Source:</b> Sumithran et al., NEJM 2011. One year after the initial loss, hunger-promoting signals remained raised and fullness signals remained lowered, alongside a real increase in felt hunger. Bars show direction and relative persistence of the changes.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="rv">Put the two together and the regain statistics stop looking like failures of discipline. Across long-term studies, people regain on the order of <strong>80 percent of their lost weight within five years</strong>. Only about one in five keeps off a meaningful amount for the long haul. That is not a population of people who stopped caring. It is a population fighting a body that lowered its fuel use and raised its hunger and then waited, patiently, for willpower to run out.</p>
+
+    <div class="stats rv">
+      <div class="stat j"><div class="n">~80%</div><div class="l">of lost weight typically regained within 5 years</div></div>
+      <div class="stat"><div class="n">~500</div><div class="l">kcal/day metabolism stayed suppressed, beyond body size, years later</div></div>
+      <div class="stat"><div class="n">1 in 5</div><div class="l">roughly the share who maintain meaningful loss long term</div></div>
+    </div>
+
+    <p class="rv">This is the nuance I was after, the ground between two bad slogans. "People can't lose weight" is false; people lose weight all the time. "Just eat less and move more" is technically true and almost useless, because it describes the task while ignoring that the body rewrites the rules the moment a person starts. Sustained weight loss is not easy work that some people are too lazy to do. It is genuinely hard work against an opponent that gets stronger the more it loses. Treating it as a character flaw is both wrong on the science and cruel in the doing.</p>
+  </div>
+</section>
+
+<!-- ========================= 3.5 THE ASYMMETRY (personal) ========================= -->
+<section id="asym">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The asymmetry &middot; why prevention beats reversal</span>
+      <h2>Going up is a slope. Coming back is a <em>wall.</em></h2>
+    </div>
+    <p class="big rv dim">The defense I just walked through is lopsided. The body fights weight loss far harder than it fights weight gain. That single fact is why the cheapest pound to lose is the one I never put on.</p>
+
+    <p class="rv">Researchers call it asymmetric regulation. Lose weight and the body mounts a full counterattack of hunger and slowed metabolism. Gain weight and the pushback is weak and easily overridden. One obesity researcher summed it up bluntly: <strong>"obesity protects obesity."</strong> The lower edge of my weight is guarded like a border. The upper edge is a screen door.</p>
+
+    <p class="rv">And it gets more durable than appetite and metabolism alone. Fat cells are the storage tanks, and their <strong>number is mostly set by early adulthood and barely changes after that</strong>. When I gain, those cells swell, and a long enough surplus can even add new ones. Here is the catch the research is clear on: when I lose the weight, the cells shrink, <strong>they do not disappear</strong>. I am left with the same set of tanks, or more, now sitting empty and biologically primed to refill. A body that has been heavier keeps the hardware to get there again.</p>
+  </div>
+
+  <div class="fig rv" data-chart="cell">
+    <div class="card">
+      <p class="fig-title">Lose the fat, keep the tanks</p>
+      <p class="fig-sub">Fat-cell number holds steady; only the size changes</p>
+      <svg id="cellChart" viewBox="0 0 880 250" aria-label="Diagram showing fat cells enlarging with weight gain then shrinking but not disappearing with weight loss"></svg>
+      <p class="cap"><b>Source:</b> Spalding et al., Nature 2008. Fat-cell number is set largely in childhood and adolescence and stays roughly constant in adulthood (about 10% renewed per year), with the count holding even after major weight loss. Cells shrink during weight loss rather than vanishing.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h3 class="rv">Now my own numbers.</h3>
+    <p class="rv">I spent my life at six foot two and 165. When I boxed and lifted, I climbed to about 175, then drifted right back to 165 once I stopped. That is the asymmetry working in my favor: 165 was the weight my body defended, so a short trip above it simply sagged back down on its own. I never had to fight for it.</p>
+    <p class="rv">This past year I have added around 20 pounds, some of it muscle, and I am sitting near 185. At six foot two that is a healthy, filled-out place to be, and I think the added muscle suits me. The thing worth understanding is what happens next if my habits slip and the number keeps climbing.</p>
+  </div>
+
+  <div class="fig rv" data-chart="traj">
+    <div class="card">
+      <p class="fig-title">The fork in the road</p>
+      <p class="fig-sub">My weight over time, and the two paths from here &middot; lb</p>
+      <svg id="trajChart" viewBox="0 0 880 450" aria-label="A weight trajectory holding at 165 for years, rising to 185 now, then forking into holding steady versus drifting to 200 where the defended weight ratchets up"></svg>
+      <p class="cap"><b>How to read it:</b> The dashed line is the weight my body actively defends. For years it sat at 165, which is why the climb to 175 slid back on its own. If a higher weight is held long enough, that defended line ratchets up to meet it, and it does not come back down easily. The bracket on the right is the uphill climb I would be signing up for if I ever decided I wanted to be leaner again.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="rv">If 185 drifts to 200 and 200 sits there for a year or two, my body starts treating 200 as the number to protect. And if I then decided I wanted to get back to 165, those 35 pounds would stop behaving like my easy 175-to-165 slide and start behaving like the Biggest Loser climb from the last section: hunger turned up, metabolism turned down, the full defense, all of it aimed at keeping me exactly where I had decided I no longer wanted to be.</p>
+
+    <p class="pull rv">The drift from 185 to 200 would be gravity. The climb back down would be rock climbing. They are not the same trip in reverse.</p>
+
+    <p class="rv">None of this is destiny, and it is not a reason for alarm at 185. Set point is a model, not a law. Environment and habits move it, muscle is not fat, and a lifelong-lean, athletic body that only recently filled out is about the best possible starting position I could ask for. That is exactly the point. The window where a higher weight has not yet become my defended weight is open right now, and it is the cheapest it will ever be to stay near a weight my body still recognizes as home. The takeaway is not panic. It is that prevention is not merely easier than reversal, it is a different and gentler kind of effort entirely. A little vigilance now spares me the enormous, biology-defying version later.</p>
+  </div>
+</section>
+
+<!-- ========================= 4. THE LEVER (GLP-1) ========================= -->
+<section id="glp1" class="tint">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow gold">The lever &middot; What GLP-1s change</span>
+      <h2>The first tool that fights <em>back against the body.</em></h2>
+    </div>
+    <p class="big rv dim">If the core problem is a biology that defends fat with hunger and a slowed metabolism, then the breakthrough of GLP-1 medications is that they reach into that biology directly, instead of asking people to out-discipline it.</p>
+
+    <p class="rv">Drugs like <span class="accent-g">semaglutide</span> (Wegovy) and <span class="accent-g">tirzepatide</span> (Zepbound) mimic and amplify the gut hormones that tell the brain it is full. They blunt appetite, quiet the constant food noise, and slow how fast the stomach empties. In effect they push back on the exact hunger signal that defeats dieters in the Sumithran study. That is why the results are on a different scale from anything diet alone has produced.</p>
+  </div>
+
+  <div class="fig rv" data-chart="glp">
+    <div class="card">
+      <p class="fig-title">A different order of magnitude</p>
+      <p class="fig-sub">Average weight loss in trials &middot; percent of body weight</p>
+      <svg id="glpChart" viewBox="0 0 880 360" aria-label="Bar chart of weight loss by intervention, with GLP-1 drugs far exceeding lifestyle alone"></svg>
+      <p class="cap"><b>Source:</b> STEP-1 (semaglutide, 14.9%, NEJM 2021); SURMOUNT-1 (tirzepatide, ~21%); SURMOUNT-5 head-to-head (tirzepatide 20.2% vs semaglutide 13.7%, 2025); retatrutide phase-2 (~24%, investigational). Lifestyle figure is typical maintained loss from behavioral programs.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="rv">But the same studies carry the lesson of this whole essay. When people <strong>stop</strong> the medication, the defended biology comes right back. In the semaglutide extension, patients regained about <span class="accent-e">two thirds of their lost weight within a year of stopping</span>. The drug was not a cure that resets the body; it was a counterweight that only works while it is held. That is why clinicians increasingly describe obesity the way they describe high blood pressure: a chronic condition that the treatment manages rather than ends.</p>
+  </div>
+
+  <div class="fig rv" data-chart="stop">
+    <div class="card">
+      <p class="fig-title">What happens when the counterweight is removed</p>
+      <p class="fig-sub">Body weight change &middot; on treatment, then after stopping</p>
+      <svg id="stopChart" viewBox="0 0 880 320" aria-label="Line chart showing weight loss on semaglutide then regaining most of it after discontinuation"></svg>
+      <p class="cap"><b>Source:</b> Wilding et al., STEP-1 extension, Diabetes Obesity &amp; Metabolism 2022. After withdrawal, participants regained roughly two thirds of the lost weight within a year, settling about 5.6% below their starting point.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="rv">There are real caveats worth holding alongside the optimism. A meaningful share of the weight lost on these drugs is lean tissue, not just fat, which is why protein and strength training matter even more on them. Cost and access are uneven, side effects are common during dose escalation, and the long-run picture is still being written. None of that erases the central point: for the first time, the thing being treated is the biology itself, not the patient's resolve.</p>
+  </div>
+</section>
+
+<!-- ========================= SYNTHESIS ========================= -->
+<section id="synthesis">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow dim">The honest middle</span>
+      <h2>Hard is not the same as <em>impossible.</em></h2>
+    </div>
+    <p class="rv">Hold all of it at once. The fancy diets are mostly interchangeable, and the one that works is the one a person can actually live with. Calories in and calories out is true at the foundation, but both sides move the moment someone starts, and the food on the plate changes how much gets eaten without any decision to eat more. Losing weight is achievable. Keeping it off means living, often permanently, against a body that has quietly turned down its furnace and turned up its hunger, and is in no rush to stop.</p>
+
+    <p class="rv">That is the empathy the data earns. Not the despair of "nothing works," and not the contempt of "just try harder," but the respect owed to anyone doing one of the genuinely hard things a human body can be asked to do, against an opponent that does not get tired. The people who manage it are not displaying ordinary discipline. They are overriding a survival system, day after day. And the people who do not manage it are not failing a test of worth. They are losing a fight that was rigged at the level of hormones and heat.</p>
+
+    <p class="pull rv">Worthiness was never the variable. Biology was.</p>
+  </div>
+</section>
+
+<!-- ========================= FOOTER / REFS ========================= -->
+<footer>
+  <div class="wrap">
+    <span class="eyebrow dim">Sources</span>
+    <ol class="refs">
+      <li>Gardner CD, et al. <b>Effect of Low-Fat vs Low-Carbohydrate Diet on Weight Change (DIETFITS).</b> JAMA, 2018. <a href="https://jamanetwork.com/journals/jama/fullarticle/2673150" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>Sacks FM, et al. <b>Comparison of Weight-Loss Diets with Different Compositions of Fat, Protein, and Carbohydrates (POUNDS LOST).</b> NEJM, 2009. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0804748" target="_blank" rel="noopener">nejm.org</a></li>
+      <li>Johnston BC, et al. <b>Comparison of Weight Loss Among Named Diet Programs.</b> JAMA, 2014. <a href="https://jamanetwork.com/journals/jama/fullarticle/1900510" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>Hall KD, et al. <b>Ultra-Processed Diets Cause Excess Calorie Intake and Weight Gain.</b> Cell Metabolism, 2019. <a href="https://www.cell.com/cell-metabolism/fulltext/S1550-4131(19)30248-7" target="_blank" rel="noopener">cell.com</a></li>
+      <li>Fothergill E, et al. <b>Persistent Metabolic Adaptation 6 Years After "The Biggest Loser" Competition.</b> Obesity, 2016. <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/oby.21538" target="_blank" rel="noopener">wiley.com</a></li>
+      <li>Sumithran P, et al. <b>Long-Term Persistence of Hormonal Adaptations to Weight Loss.</b> NEJM, 2011. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa1105816" target="_blank" rel="noopener">nejm.org</a></li>
+      <li>Wing RR, Hill JO; long-term maintenance meta-analyses. <b>~80% of lost weight regained by 5 years</b> across structured programs. (AJCN 2001; subsequent reviews.) <a href="https://www.sciencedirect.com/science/article/pii/S0002916523063748" target="_blank" rel="noopener">ajcn.nutrition.org</a></li>
+      <li>Wilding JPH, et al. <b>STEP-1 (semaglutide), NEJM 2021</b>, and the <b>STEP-1 trial extension</b> (weight regain after withdrawal), Diabetes Obesity &amp; Metabolism, 2022. <a href="https://dom-pubs.onlinelibrary.wiley.com/doi/10.1111/dom.14725" target="_blank" rel="noopener">wiley.com</a></li>
+      <li>Jastreboff AM, et al. <b>SURMOUNT-1 (tirzepatide).</b> NEJM, 2022. Aronne LJ, et al. <b>SURMOUNT-5 head-to-head.</b> NEJM, 2025.</li>
+      <li>Spalding KL, et al. <b>Dynamics of Fat Cell Turnover in Humans.</b> Nature, 2008. Fat-cell number is set in childhood/adolescence and stays roughly constant in adulthood, even after major weight loss. <a href="https://www.nature.com/articles/nature06902" target="_blank" rel="noopener">nature.com</a></li>
+      <li>M&uuml;ller MJ, Bosy-Westphal A, Heymsfield SB. <b>Is there evidence for a set point that regulates human body weight?</b> F1000 Medicine Reports, 2010, on the asymmetric defense of body weight. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2990627/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a> See also <b>Obesity and Set-Point Theory</b>, StatPearls, 2023 ("obesity protects obesity").</li>
+    </ol>
+    <p class="note">Built as an evidence summary, not medical advice. Trial figures are means; individual results vary widely, and the body-composition and long-term safety picture for GLP-1 medications is still developing.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const C = {
+    bg2:'#1E1826', bg3:'#271F31',
+    ink:'#ECE4DC', dim:'#A99FB0', faint:'#6E6478',
+    ember:'#F0703A', emberDeep:'#C24A22',
+    jade:'#54C4A6', jadeDeep:'#2E8A72',
+    gold:'#E8B54B',
+    grid:'rgba(236,228,220,0.10)'
+  };
+  const SVGNS='http://www.w3.org/2000/svg';
+  const el=(n,a)=>{const e=document.createElementNS(SVGNS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+  const txt=(x,y,s,a={})=>{const t=el('text',Object.assign({x,y},a));t.textContent=s;return t;};
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function fontMono(t,size,fill,weight){t.setAttribute('font-family','JetBrains Mono, monospace');t.setAttribute('font-size',size);t.setAttribute('fill',fill);if(weight)t.setAttribute('font-weight',weight);return t;}
+  function fontSans(t,size,fill,weight){t.setAttribute('font-family','Hanken Grotesk, sans-serif');t.setAttribute('font-size',size);t.setAttribute('fill',fill);if(weight)t.setAttribute('font-weight',weight);return t;}
+
+  /* ---------------- HERO chart ---------------- */
+  function hero(){
+    const svg=document.getElementById('heroChart'); if(!svg) return;
+    const W=940,H=300, padL=20,padR=20,padT=20,padB=30;
+    const x0=padL, x1=W-padR, base=80; // baseline weight y
+    const bottom=H-padB;
+    // defended baseline line
+    svg.appendChild(el('line',{x1:x0,y1:base,x2:x1,y2:base,stroke:C.faint,'stroke-width':2,'stroke-dasharray':'2 7','stroke-linecap':'round'}));
+    svg.appendChild(fontMono(txt(x0+2,base-12,'defended baseline',{'text-anchor':'start'}),12,C.faint));
+
+    // effort curve (jade): down from baseline
+    const effort=[[x0,base],[x0+170,base+18],[x0+330,bottom-30],[x0+430,bottom-6]];
+    const dPath=`M ${effort[0][0]} ${effort[0][1]} C ${x0+90} ${base}, ${x0+150} ${base+90}, ${x0+330} ${bottom-30} S ${x0+400} ${bottom-2}, ${x0+430} ${bottom-6}`;
+    const eff=el('path',{d:dPath,fill:'none',stroke:C.jade,'stroke-width':3.5,'stroke-linecap':'round'});
+    svg.appendChild(eff);
+    // pull curve (ember): rising back toward baseline
+    const pPath=`M ${x0+430} ${bottom-6} C ${x0+560} ${bottom-30}, ${x0+700} ${base+150}, ${x0+820} ${base+34} S ${x1-10} ${base+18}, ${x1} ${base+14}`;
+    const pull=el('path',{d:pPath,fill:'none',stroke:C.ember,'stroke-width':3.5,'stroke-linecap':'round'});
+    svg.appendChild(pull);
+
+    // marker at the low point
+    svg.appendChild(el('circle',{cx:x0+430,cy:bottom-6,r:5,fill:C.jade}));
+    // annotations
+    const a1=fontSans(txt(x0+270,bottom+22,'the weight comes off'),13,C.jade,600);a1.setAttribute('text-anchor','middle');svg.appendChild(a1);
+    const a2=fontSans(txt(x0+700,base+150+22,'the body pulls it back'),13,C.ember,600);a2.setAttribute('text-anchor','middle');svg.appendChild(a2);
+
+    // animate draw
+    [eff,pull].forEach((p,i)=>{
+      const len=p.getTotalLength();
+      p.style.strokeDasharray=len; p.style.strokeDashoffset=reduce?0:len;
+      if(!reduce){
+        p.style.transition=`stroke-dashoffset 1.5s cubic-bezier(.4,.1,.2,1) ${0.3+i*1.2}s`;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{p.style.strokeDashoffset=0;}));
+      }
+    });
+  }
+
+  /* ---------------- generic bar chart ---------------- */
+  function barChart(id,opts){
+    const svg=document.getElementById(id); if(!svg) return;
+    const vb=svg.viewBox.baseVal, W=vb.width, H=vb.height;
+    const padL=opts.padL||54, padR=20, padT=24, padB=opts.padB||64;
+    const x0=padL, x1=W-padR, yTop=padT, yBot=H-padB;
+    const data=opts.data;
+    const maxV=opts.max!==undefined?opts.max:Math.max(...data.map(d=>Math.abs(d.v)));
+    const zeroAtTop=opts.zeroAtTop; // for "loss" charts bars grow downward
+    const n=data.length, gap=opts.gap||0.34;
+    const slot=(x1-x0)/n, bw=slot*(1-gap);
+    // baseline / axis
+    const axisY=zeroAtTop?yTop:yBot;
+    svg.appendChild(el('line',{x1:x0-6,y1:axisY,x2:x1,y2:axisY,stroke:C.grid,'stroke-width':1}));
+    // gridlines
+    if(opts.grid){ for(let g=1;g<=opts.grid;g++){const yy=zeroAtTop?yTop+(yBot-yTop)*g/opts.grid:yBot-(yBot-yTop)*g/opts.grid; svg.appendChild(el('line',{x1:x0,y1:yy,x2:x1,y2:yy,stroke:C.grid,'stroke-width':1}));}}
+    data.forEach((d,i)=>{
+      const cx=x0+slot*i+slot/2;
+      const h=Math.abs(d.v)/maxV*(yBot-yTop);
+      const fill=d.color||C.ember;
+      const ry=zeroAtTop?yTop:yBot-h;
+      const rect=el('rect',{x:cx-bw/2,y:zeroAtTop?yTop:yBot,width:bw,height:0,rx:6,fill:fill,opacity:d.faded?0.5:1});
+      svg.appendChild(rect);
+      // value label
+      const vy=zeroAtTop?yTop+h+20:yBot-h-12;
+      const vlab=fontSans(txt(cx,vy,d.label),16,fill,700);vlab.setAttribute('text-anchor','middle');
+      vlab.style.opacity=0;svg.appendChild(vlab);
+      // category label
+      const cats=String(d.name).split('\n');
+      cats.forEach((line,li)=>{const cl=fontMono(txt(cx,yBot+22+li*15,line),11.5,C.dim);cl.setAttribute('text-anchor','middle');svg.appendChild(cl);});
+      // animate
+      const reveal=()=>{ rect.style.transition='height .9s cubic-bezier(.2,.7,.2,1), y .9s cubic-bezier(.2,.7,.2,1)'; rect.setAttribute('height',h); if(!zeroAtTop)rect.setAttribute('y',ry); setTimeout(()=>{vlab.style.transition='opacity .5s';vlab.style.opacity=1;},500+i*60); };
+      d._reveal=reduce?(()=>{rect.setAttribute('height',h);if(!zeroAtTop)rect.setAttribute('y',ry);vlab.style.opacity=1;}):()=>setTimeout(reveal,i*90);
+    });
+    svg._reveal=()=>data.forEach(d=>d._reveal&&d._reveal());
+    if(opts.ylab){const t=fontMono(txt(0,0,opts.ylab),11,C.faint);t.setAttribute('transform',`translate(14,${(yTop+yBot)/2}) rotate(-90)`);t.setAttribute('text-anchor','middle');svg.appendChild(t);}
+  }
+
+  /* ---------------- Biggest Loser RMR chart ---------------- */
+  function blChart(){
+    const svg=document.getElementById('blChart'); if(!svg) return;
+    const W=880,H=380, padL=64,padR=30,padT=30,padB=74;
+    const x0=padL,x1=W-padR,yTop=padT,yBot=H-padB;
+    const yMin=1600,yMax=2700;
+    const Y=v=>yBot-(v-yMin)/(yMax-yMin)*(yBot-yTop);
+    // gridlines + labels
+    for(let v=1600;v<=2700;v+=200){const yy=Y(v);svg.appendChild(el('line',{x1:x0,y1:yy,x2:x1,y2:yy,stroke:C.grid,'stroke-width':1}));const t=fontMono(txt(x0-10,yy+4,v),11,C.faint);t.setAttribute('text-anchor','end');svg.appendChild(t);}
+    const pts=[{n:'Baseline',v:2607},{n:'End of\ncontest',v:1996},{n:'6 years\nlater',v:1903}];
+    const xs=[x0+90, (x0+x1)/2, x1-90];
+    // predicted line for regained body (where RMR "should" be at 6yr) ~ 2402
+    const predicted=2402;
+    svg.appendChild(el('line',{x1:xs[2]-70,y1:Y(predicted),x2:xs[2]+40,y2:Y(predicted),stroke:C.faint,'stroke-width':2,'stroke-dasharray':'2 6','stroke-linecap':'round'}));
+    const pl=fontMono(txt(xs[2]+44,Y(predicted)+4,'expected'),11,C.faint);svg.appendChild(pl);
+    // gap shading between predicted and actual at 6yr
+    svg.appendChild(el('rect',{x:xs[2]-30,y:Y(predicted),width:60,height:Y(1903)-Y(predicted),fill:'rgba(240,112,58,0.16)'}));
+    const gaplab=fontSans(txt(xs[2]-44,(Y(predicted)+Y(1903))/2,'~500 kcal/day gap'),12.5,C.ember,700);gaplab.setAttribute('text-anchor','end');svg.appendChild(gaplab);
+
+    // line path
+    const path=el('path',{d:`M ${xs[0]} ${Y(pts[0].v)} L ${xs[1]} ${Y(pts[1].v)} L ${xs[2]} ${Y(pts[2].v)}`,fill:'none',stroke:C.jade,'stroke-width':3.5,'stroke-linecap':'round','stroke-linejoin':'round'});
+    svg.appendChild(path);
+    pts.forEach((p,i)=>{
+      svg.appendChild(el('circle',{cx:xs[i],cy:Y(p.v),r:6,fill:C.bg2,stroke:C.jade,'stroke-width':3}));
+      const vl=fontSans(txt(xs[i],Y(p.v)-16,p.v.toLocaleString()),16,C.ink,700);vl.setAttribute('text-anchor','middle');svg.appendChild(vl);
+      p.n.split('\n').forEach((line,li)=>{const cl=fontMono(txt(xs[i],yBot+24+li*15,line),11.5,C.dim);cl.setAttribute('text-anchor','middle');svg.appendChild(cl);});
+    });
+    const yl=fontMono(txt(0,0,'resting metabolism (kcal/day)'),11,C.faint);yl.setAttribute('transform',`translate(16,${(yTop+yBot)/2}) rotate(-90)`);yl.setAttribute('text-anchor','middle');svg.appendChild(yl);
+    // animate
+    const len=path.getTotalLength();
+    path.style.strokeDasharray=len;path.style.strokeDashoffset=reduce?0:len;
+    svg._reveal=()=>{ if(reduce)return; path.style.transition='stroke-dashoffset 1.6s cubic-bezier(.3,.1,.2,1)'; path.style.strokeDashoffset=0; };
+  }
+
+  /* ---------------- hormones diverging chart ---------------- */
+  function hormChart(){
+    const svg=document.getElementById('hormChart'); if(!svg) return;
+    const W=880,H=320,padL=170,padR=80,padT=20,padB=30;
+    const x0=padL,x1=W-padR;
+    const mid=(x0+x1)/2;
+    const rows=[
+      {n:'Ghrelin (hunger)', dir:1, mag:0.9, note:'still elevated'},
+      {n:'Subjective hunger', dir:1, mag:0.8, note:'still raised'},
+      {n:'Leptin (fullness)', dir:-1, mag:0.85, note:'still suppressed'},
+      {n:'Peptide YY (fullness)', dir:-1, mag:0.65, note:'still suppressed'}
+    ];
+    const rowH=(H-padT-padB)/rows.length;
+    const half=(x1-x0)/2-10;
+    // center axis
+    svg.appendChild(el('line',{x1:mid,y1:padT-2,x2:mid,y2:H-padB+2,stroke:C.grid,'stroke-width':1}));
+    svg.appendChild(fontMono(txt(mid,H-6,'baseline'),11,C.faint,null)).setAttribute('text-anchor','middle');
+    const hUp=fontMono(txt(x1,padT+10,'drives eating →'),11,C.ember);hUp.setAttribute('text-anchor','end');svg.appendChild(hUp);
+    const hDn=fontMono(txt(x0,padT+10,'← curbs eating'),11,C.jade);svg.appendChild(hDn);
+    rows.forEach((r,i)=>{
+      const cy=padT+rowH*i+rowH/2;
+      const w=r.mag*half;
+      const fill=r.dir>0?C.ember:C.jade;
+      const rx=r.dir>0?mid:mid-w;
+      const rect=el('rect',{x:r.dir>0?mid:mid,y:cy-13,width:0,height:26,rx:6,fill:fill});
+      svg.appendChild(rect);
+      const name=fontSans(txt(x0-16,cy+5,r.n),14.5,C.ink,600);name.setAttribute('text-anchor','end');svg.appendChild(name);
+      // positive notes sit outside to the right; negative notes sit inside the bar (dark text) to avoid colliding with row labels
+      const inside=r.dir<0;
+      const noteX=r.dir>0?mid+w+10:(mid-w+14);
+      const note=fontMono(txt(noteX,cy+4,r.note),11,inside?C.bg2:fill,inside?700:null);note.setAttribute('text-anchor','start');note.style.opacity=0;svg.appendChild(note);
+      r._reveal=()=>{ if(reduce){rect.setAttribute('width',w);if(r.dir<0)rect.setAttribute('x',mid-w);note.style.opacity=1;return;} rect.style.transition='width .9s cubic-bezier(.2,.7,.2,1), x .9s cubic-bezier(.2,.7,.2,1)';rect.setAttribute('width',w);if(r.dir<0)rect.setAttribute('x',mid-w);setTimeout(()=>{note.style.transition='opacity .5s';note.style.opacity=1;},600); };
+    });
+    svg._reveal=()=>rows.forEach((r,i)=>setTimeout(r._reveal,i*120));
+  }
+
+  /* ---------------- GLP-1 discontinuation line ---------------- */
+  function stopChart(){
+    const svg=document.getElementById('stopChart'); if(!svg) return;
+    const W=880,H=320,padL=58,padR=120,padT=26,padB=58;
+    const x0=padL,x1=W-padR,yTop=padT,yBot=H-padB;
+    const yMin=-18,yMax=2;
+    const Y=v=>yBot-(v-yMin)/(yMax-yMin)*(yBot-yTop);
+    const X=w=>x0+(w/120)*(x1-x0);
+    for(let v=0;v>=-18;v-=6){const yy=Y(v);svg.appendChild(el('line',{x1:x0,y1:yy,x2:x1,y2:yy,stroke:C.grid,'stroke-width':1}));const t=fontMono(txt(x0-8,yy+4,v+'%'),11,C.faint);t.setAttribute('text-anchor','end');svg.appendChild(t);}
+    // treatment region shading
+    svg.appendChild(el('rect',{x:X(0),y:yTop,width:X(68)-X(0),height:yBot-yTop,fill:'rgba(232,181,75,0.07)'}));
+    const onlab=fontMono(txt((X(0)+X(68))/2,yTop-8,'on treatment'),11,C.gold);onlab.setAttribute('text-anchor','middle');svg.appendChild(onlab);
+    const offlab=fontMono(txt((X(68)+X(120))/2,yTop-8,'stopped'),11,C.ember);offlab.setAttribute('text-anchor','middle');svg.appendChild(offlab);
+    // x labels
+    [[0,'week 0'],[68,'week 68'],[120,'week 120']].forEach(([w,l])=>{const t=fontMono(txt(X(w),yBot+22,l),11,C.dim);t.setAttribute('text-anchor','middle');svg.appendChild(t);});
+    // descent on drug
+    const onPath=el('path',{d:`M ${X(0)} ${Y(0)} C ${X(25)} ${Y(-9)}, ${X(50)} ${Y(-16)}, ${X(68)} ${Y(-17.3)}`,fill:'none',stroke:C.gold,'stroke-width':3.5,'stroke-linecap':'round'});
+    svg.appendChild(onPath);
+    // regain off drug
+    const offPath=el('path',{d:`M ${X(68)} ${Y(-17.3)} C ${X(85)} ${Y(-13)}, ${X(105)} ${Y(-7)}, ${X(120)} ${Y(-5.6)}`,fill:'none',stroke:C.ember,'stroke-width':3.5,'stroke-linecap':'round'});
+    svg.appendChild(offPath);
+    // endpoints
+    svg.appendChild(el('circle',{cx:X(68),cy:Y(-17.3),r:5,fill:C.gold}));
+    svg.appendChild(el('circle',{cx:X(120),cy:Y(-5.6),r:5,fill:C.ember}));
+    const e1=fontSans(txt(X(68)+8,Y(-17.3)+5,'-17.3%'),14,C.gold,700);svg.appendChild(e1);
+    const e2=fontSans(txt(X(120)+8,Y(-5.6)+5,'-5.6%'),14,C.ember,700);svg.appendChild(e2);
+    const regain=fontMono(txt(X(120)+8,Y(-5.6)+24,'≈ 2/3 regained'),11,C.ember);svg.appendChild(regain);
+    [onPath,offPath].forEach((p,i)=>{const len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=reduce?0:len;p._len=len;});
+    svg._reveal=()=>{ if(reduce)return; onPath.style.transition='stroke-dashoffset 1.3s ease';onPath.style.strokeDashoffset=0; setTimeout(()=>{offPath.style.transition='stroke-dashoffset 1.2s ease';offPath.style.strokeDashoffset=0;},1100); };
+  }
+
+  /* ---------------- fat-cell diagram ---------------- */
+  function cellDiagram(){
+    const svg=document.getElementById('cellChart'); if(!svg) return;
+    const W=880,H=250;
+    const cy=104, cols=4, rows=2;
+    const panels=[
+      {cx:150,r:11,fill:'rgba(84,196,166,0.30)',stroke:C.jade,title:'At 165 (lean)',sub:'cells small'},
+      {cx:440,r:21,fill:'rgba(240,112,58,0.55)',stroke:C.ember,title:'At 200 (heavier)',sub:'same cells, swollen'},
+      {cx:730,r:11,fill:'none',stroke:C.jade,title:'Back to 165',sub:'same cells, now empty'}
+    ];
+    panels.forEach((p,pi)=>{
+      const spread=p.r*2+10;
+      const gx=p.cx-(cols-1)*spread/2, gy=cy-(rows-1)*spread/2;
+      for(let i=0;i<cols*rows;i++){
+        const c=el('circle',{cx:gx+(i%cols)*spread,cy:gy+Math.floor(i/cols)*spread,r:0,fill:p.fill,stroke:p.stroke,'stroke-width':2});
+        svg.appendChild(c);
+        if(reduce){c.setAttribute('r',p.r);}
+        else{c.style.transition=`r .6s cubic-bezier(.2,.7,.2,1) ${pi*0.5+i*0.03}s`;requestAnimationFrame(()=>requestAnimationFrame(()=>c.setAttribute('r',p.r)));}
+      }
+      const t=fontSans(txt(p.cx,210,p.title),15,C.ink,700);t.setAttribute('text-anchor','middle');svg.appendChild(t);
+      const s=fontMono(txt(p.cx,230,p.sub),11.5,pi===1?C.ember:C.jade);s.setAttribute('text-anchor','middle');svg.appendChild(s);
+    });
+    // arrows + labels
+    [[290,'gain',C.ember],[585,'lose',C.jade]].forEach(([x,lab,col])=>{
+      svg.appendChild(el('line',{x1:x-26,y1:cy,x2:x+26,y2:cy,stroke:col,'stroke-width':2}));
+      svg.appendChild(el('path',{d:`M ${x+26} ${cy} l -9 -5 l 0 10 z`,fill:col}));
+      const t=fontMono(txt(x,cy-14,lab),12,col,500);t.setAttribute('text-anchor','middle');svg.appendChild(t);
+    });
+  }
+
+  /* ---------------- personal trajectory chart ---------------- */
+  function trajChart(){
+    const svg=document.getElementById('trajChart'); if(!svg) return;
+    const W=880,H=450,padL=46,padR=170,padT=36,padB=66;
+    const x0=padL,x1=W-padR,yTop=padT,yBot=H-padB;
+    const wMin=150,wMax=206;
+    const Y=w=>yBot-(w-wMin)/(wMax-wMin)*(yBot-yTop);
+    const X=t=>x0+t*(x1-x0);
+    // gridlines + y labels
+    for(let w=150;w<=200;w+=10){const yy=Y(w);svg.appendChild(el('line',{x1:x0,y1:yy,x2:x1+40,y2:yy,stroke:C.grid,'stroke-width':1}));const t=fontMono(txt(x0-8,yy+4,w),11,C.faint);t.setAttribute('text-anchor','end');svg.appendChild(t);}
+    const fork=0.56;
+    // historical defended baseline at 165
+    svg.appendChild(el('line',{x1:X(0),y1:Y(165),x2:X(fork),y2:Y(165),stroke:C.faint,'stroke-width':2,'stroke-dasharray':'2 7','stroke-linecap':'round'}));
+    const dl=fontMono(txt(X(0.02),Y(165)+18,'defended: 165'),11.5,C.ink_faint||C.faint);svg.appendChild(dl);
+    // ratchet: defended weight creeping up along the drift scenario
+    const ratchet=el('path',{d:`M ${X(fork)} ${Y(165)} C ${X(0.7)} ${Y(168)}, ${X(0.84)} ${Y(184)}, ${X(0.99)} ${Y(192)}`,fill:'none',stroke:C.ember,'stroke-width':2,'stroke-dasharray':'2 7','stroke-linecap':'round',opacity:0.7});
+    svg.appendChild(ratchet);
+    const rl=fontMono(txt(X(0.99)+8,Y(192)+4,'defended'),11,C.ember);svg.appendChild(rl);
+    const rl2=fontMono(txt(X(0.99)+8,Y(192)+18,'weight rises'),11,C.ember);svg.appendChild(rl2);
+    // history line
+    const hist=[[0.03,165],[0.19,175],[0.34,165],[fork,185]];
+    let d='M '+X(hist[0][0])+' '+Y(hist[0][1]);
+    d+=' L '+X(hist[1][0])+' '+Y(hist[1][1]);
+    d+=' L '+X(hist[2][0])+' '+Y(hist[2][1]);
+    d+=' C '+X(0.44)+' '+Y(165)+', '+X(0.5)+' '+Y(178)+', '+X(fork)+' '+Y(185);
+    const histPath=el('path',{d,fill:'none',stroke:C.ink,'stroke-width':3.5,'stroke-linecap':'round','stroke-linejoin':'round'});
+    svg.appendChild(histPath);
+    // drift path (ember)
+    const drift=el('path',{d:`M ${X(fork)} ${Y(185)} C ${X(0.72)} ${Y(190)}, ${X(0.82)} ${Y(200)}, ${X(0.92)} ${Y(200)} L ${X(0.99)} ${Y(200)}`,fill:'none',stroke:C.ember,'stroke-width':3.5,'stroke-linecap':'round'});
+    svg.appendChild(drift);
+    // hold path (jade)
+    const hold=el('path',{d:`M ${X(fork)} ${Y(185)} C ${X(0.75)} ${Y(184)}, ${X(0.85)} ${Y(183)}, ${X(0.99)} ${Y(183)}`,fill:'none',stroke:C.jade,'stroke-width':2.5,'stroke-linecap':'round','stroke-dasharray':'1 0'});
+    svg.appendChild(hold);
+    // history markers + labels
+    hist.forEach((p,i)=>{svg.appendChild(el('circle',{cx:X(p[0]),cy:Y(p[1]),r:5,fill:C.bg2,stroke:C.ink,'stroke-width':2.5}));});
+    // fork marker
+    svg.appendChild(el('circle',{cx:X(fork),cy:Y(185),r:6,fill:C.ink}));
+    const nowL=fontSans(txt(X(fork),Y(185)-14,'now: 185'),14,C.ink,700);nowL.setAttribute('text-anchor','middle');svg.appendChild(nowL);
+    // dip annotation
+    const dip=fontMono(txt(X(0.20),Y(175)-14,'up to 175...'),11.5,C.ink_dim||C.dim);dip.setAttribute('text-anchor','middle');svg.appendChild(dip);
+    const dip2=fontMono(txt(X(0.33),Y(165)+20,'...slid back on its own'),11.5,C.jade);dip2.setAttribute('text-anchor','middle');svg.appendChild(dip2);
+    // endpoint labels
+    const eDrift=fontSans(txt(X(0.99)+8,Y(200)+5,'drift: 200'),14,C.ember,700);svg.appendChild(eDrift);
+    const eHold=fontSans(txt(X(0.99)+8,Y(183)+5,'hold: 183'),13.5,C.jade,700);svg.appendChild(eHold);
+    // uphill bracket on far right between 200 and 165
+    const bx=X(0.99)+96;
+    svg.appendChild(el('path',{d:`M ${bx-6} ${Y(200)} h 6 v ${Y(165)-Y(200)} h -6`,fill:'none',stroke:C.ember,'stroke-width':1.5}));
+    const ub=fontSans(txt(bx+10,(Y(200)+Y(165))/2-6,'the climb'),12.5,C.ember,700);svg.appendChild(ub);
+    const ub2=fontSans(txt(bx+10,(Y(200)+Y(165))/2+10,'back'),12.5,C.ember,700);svg.appendChild(ub2);
+    // x stage labels
+    [[0.03,'HS to 30s'],[0.19,'boxing'],[0.34,'eased off'],[fork,'this year']].forEach(([t,l])=>{const e=fontMono(txt(X(t),yBot+24,l),10.5,C.faint);e.setAttribute('text-anchor','middle');svg.appendChild(e);});
+    const fl=fontMono(txt(X(0.8),yBot+24,'if it slips'),10.5,C.ember);fl.setAttribute('text-anchor','middle');svg.appendChild(fl);
+    // animate draw
+    [histPath,drift,hold,ratchet].forEach(p=>{const len=p.getTotalLength();p.style.strokeDasharray=p===ratchet?'2 7':len;p.style.strokeDashoffset=reduce?0:len;p._len=len;});
+    svg._reveal=()=>{ if(reduce)return;
+      histPath.style.transition='stroke-dashoffset 1.5s cubic-bezier(.3,.1,.2,1)';histPath.style.strokeDashoffset=0;
+      setTimeout(()=>{drift.style.transition='stroke-dashoffset 1.1s ease';drift.style.strokeDashoffset=0;hold.style.transition='stroke-dashoffset 1.1s ease';hold.style.strokeDashoffset=0;},1300);
+    };
+  }
+
+  /* ---------------- build all ---------------- */
+  hero();
+  barChart('dietChart',{data:[
+    {name:'Low-fat\n(DIETFITS)',v:5.3,label:'-5.3',color:C.jade,zero:true},
+    {name:'Low-carb\n(DIETFITS)',v:6.0,label:'-6.0',color:C.jade,zero:true},
+    {name:'Atkins-type\n(low carb)',v:7.0,label:'-7.0',color:C.jade},
+    {name:'Zone\n(balanced)',v:6.5,label:'-6.5',color:C.jade},
+    {name:'Ornish\n(low fat)',v:6.0,label:'-6.0',color:C.jade}
+  ],max:9,zeroAtTop:true,grid:3,ylab:'kg lost (more = down)',padB:64});
+  barChart('upfChart',{data:[
+    {name:'Unprocessed\nmenu',v:2500,label:'2,500',color:C.jade},
+    {name:'Ultra-processed\nmenu',v:3000,label:'3,000',color:C.ember}
+  ],max:3300,grid:3,gap:0.5,ymin:0,ylab:'kcal eaten per day',padB:64});
+  blChart();
+  hormChart();
+  barChart('glpChart',{data:[
+    {name:'Lifestyle\nalone',v:5,label:'~5%',color:C.dim,faded:true},
+    {name:'Semaglutide\n(STEP-1)',v:14.9,label:'14.9%',color:C.gold},
+    {name:'Tirzepatide\n(SURMOUNT-1)',v:21,label:'~21%',color:C.gold},
+    {name:'Retatrutide\n(phase 2)',v:24,label:'~24%',color:C.gold}
+  ],max:27,grid:3,gap:0.4,ylab:'% body weight lost',padB:64});
+  stopChart();
+  cellDiagram();
+  trajChart();
+
+  /* ---------------- reveal observer ---------------- */
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in');
+      const box=e.target.querySelector?.('[data-chart] svg, svg')||(e.target.matches&&e.target.matches('[data-chart]')?e.target.querySelector('svg'):null);
+      io.unobserve(e.target);
+    }});
+  },{threshold:0.16});
+  document.querySelectorAll('.rv').forEach(n=>io.observe(n));
+
+  // chart reveal observer (separate, fires _reveal once visible)
+  const cio=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{ if(e.isIntersecting){ const s=e.target.querySelector('svg'); if(s&&s._reveal){s._reveal();} cio.unobserve(e.target);} });
+  },{threshold:0.25});
+  document.querySelectorAll('[data-chart]').forEach(n=>cio.observe(n));
+
+  // hero chart already animates on load
+})();
+</script>
+</body>
+</html>
